@@ -1,4 +1,5 @@
 export const colors = {
-  concrete: "#F2F2F2",
-  egyptianblue: "#1c3da3",
+  blue1: "#1a73e8",
+  gray1: "#476282",
+  bordergray: "#F2F2F2",
 };
