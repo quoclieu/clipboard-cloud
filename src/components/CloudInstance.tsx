@@ -17,7 +17,7 @@ export const CloudInstance = () => {
     <>
       <header className={headerContainer}>
         <h1>File Cloud</h1>
-        <h2>Instance ID: {id}</h2>
+        <h2>ID: {id}</h2>
         <Button onClick={removeInstance} variant="danger">
           Delete Instance
         </Button>
@@ -46,12 +46,15 @@ const headerContainer = css`
 const flexContainer = css`
   display: flex;
   justify-content: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  } ;
 `;
 
 const contentContainer = css`
-  margin: 1rem;
+  padding: 1rem;
   display: grid;
-  grid-template-rows: 500px;
+  grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 4rem;
   max-width: 1000px;
