@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": " https://quoclieu.github.io/file-cloud/static/css/main.64e34587.chunk.css",
+    "main.js": " https://quoclieu.github.io/file-cloud/static/js/main.ad2cef65.chunk.js",
+    "main.js.map": " https://quoclieu.github.io/file-cloud/static/js/main.ad2cef65.chunk.js.map",
+    "runtime-main.js": " https://quoclieu.github.io/file-cloud/static/js/runtime-main.5b6b0fee.js",
+    "runtime-main.js.map": " https://quoclieu.github.io/file-cloud/static/js/runtime-main.5b6b0fee.js.map",
+    "static/css/2.3cf5d70f.chunk.css": " https://quoclieu.github.io/file-cloud/static/css/2.3cf5d70f.chunk.css",
+    "static/js/2.5ad1b8fb.chunk.js": " https://quoclieu.github.io/file-cloud/static/js/2.5ad1b8fb.chunk.js",
+    "static/js/2.5ad1b8fb.chunk.js.map": " https://quoclieu.github.io/file-cloud/static/js/2.5ad1b8fb.chunk.js.map",
+    "index.html": " https://quoclieu.github.io/file-cloud/index.html",
+    "precache-manifest.b692b6b2195e00b72d841e0113f710bb.js": " https://quoclieu.github.io/file-cloud/precache-manifest.b692b6b2195e00b72d841e0113f710bb.js",
+    "service-worker.js": " https://quoclieu.github.io/file-cloud/service-worker.js",
+    "static/css/2.3cf5d70f.chunk.css.map": " https://quoclieu.github.io/file-cloud/static/css/2.3cf5d70f.chunk.css.map",
+    "static/css/main.64e34587.chunk.css.map": " https://quoclieu.github.io/file-cloud/static/css/main.64e34587.chunk.css.map",
+    "static/js/2.5ad1b8fb.chunk.js.LICENSE.txt": " https://quoclieu.github.io/file-cloud/static/js/2.5ad1b8fb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5b6b0fee.js",
+    "static/css/2.3cf5d70f.chunk.css",
+    "static/js/2.5ad1b8fb.chunk.js",
+    "static/css/main.64e34587.chunk.css",
+    "static/js/main.ad2cef65.chunk.js"
+  ]
+}
