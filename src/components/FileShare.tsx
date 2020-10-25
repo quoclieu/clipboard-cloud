@@ -2,6 +2,7 @@ import { css } from "emotion";
 import produce from "immer";
 import { remove, sortBy } from "lodash-es";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
+import Button from "react-bootstrap/esm/Button";
 import Form from "react-bootstrap/Form";
 import { FaFileAlt } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
@@ -78,6 +79,12 @@ export const FileShare: FunctionComponent<Props> = ({ instanceId }) => {
   return (
     <>
       <h5 className={heading}>Files</h5>
+      <Button>
+        <label htmlFor="file-upload" style={{ marginBottom: 0 }}>
+          Upload File
+        </label>
+      </Button>
+
       <section className={fileContainer}>
         {sortBy(downloadUrls, ["name"]).map((file, index) => {
           return (
@@ -99,14 +106,14 @@ export const FileShare: FunctionComponent<Props> = ({ instanceId }) => {
         })}
       </section>
       <section>
-        <label htmlFor="file-upload" className={fileInputLabel}>
+        <label htmlFor="file-upload" className={fileDropzone}>
           <Form.Control
             id="file-upload"
             type="file"
             onChange={handleUploadFile}
             className={fileInput}
           />
-          Click or drag files here to upload.
+          Drag file here to upload.
         </label>
       </section>
     </>
@@ -126,7 +133,8 @@ const fileInput = css`
   }
 `;
 
-const fileInputLabel = css`
+const fileDropzone = css`
+  margin-top: 20px;
   border: 1px dashed ${colors.gray1};
   border-radius: 2px;
   height: 200px;

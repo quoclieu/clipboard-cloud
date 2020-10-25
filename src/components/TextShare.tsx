@@ -5,6 +5,7 @@ import React, {
   FunctionComponent,
   useCallback,
   useEffect,
+  useMemo,
   useState,
 } from "react";
 import { db } from "../services/firebase";
@@ -17,7 +18,10 @@ interface Props {
 export const TextShare: FunctionComponent<Props> = ({ instanceId }) => {
   const [textVals, setTextVals] = useState<Array<string>>([]);
   const [visibleTextArea, setVisibleTextArea] = useState<0 | 1 | 2>(0);
-  const [dbTextRef, setDbTextRef] = useState<firebase.database.Reference>();
+  const [
+    dbTextRef,
+    setDbTextRef,
+  ] = useState<firebase.database.Reference | null>(null);
 
   const loadDb = useCallback(() => {
     const dbTextRef = db().ref(instanceId).child("text");
@@ -35,12 +39,13 @@ export const TextShare: FunctionComponent<Props> = ({ instanceId }) => {
     });
   }, [instanceId]);
 
-  useEffect(loadDb, []);
+  useEffect(loadDb, [loadDb]);
 
-  const debounceUpdateDb = useCallback(
-    debounce((nextVals: Array<string>) => {
-      dbTextRef!.set({ 0: nextVals[0], 1: nextVals[1], 2: nextVals[2] });
-    }, 500),
+  const debounceUpdateDb = useMemo(
+    () =>
+      debounce((nextVals: Array<string>) => {
+        dbTextRef!.set({ 0: nextVals[0], 1: nextVals[1], 2: nextVals[2] });
+      }, 500),
     [dbTextRef]
   );
 
@@ -62,6 +67,7 @@ export const TextShare: FunctionComponent<Props> = ({ instanceId }) => {
 
   return (
     <>
+      <h5 className={heading}>Text</h5>
       <div className={btnContainer}>
         <button
           className={cx(tabBtn, { [tabBtnSelected]: visibleTextArea === 0 })}
@@ -99,6 +105,12 @@ export const TextShare: FunctionComponent<Props> = ({ instanceId }) => {
     </>
   );
 };
+
+const heading = css`
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 5px;
+`;
 
 const tabBtn = css`
   border-radius: 0px;

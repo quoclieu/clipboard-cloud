@@ -46,7 +46,7 @@ const headerContainer = css`
 const flexContainer = css`
   display: flex;
   justify-content: center;
-  @media (max-width: 500px) {
+  @media (max-width: 800px) {
     flex-direction: column;
   } ;
 `;
@@ -55,7 +55,7 @@ const contentContainer = css`
   padding: 1rem;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-gap: 4rem;
-  max-width: 1000px;
+  max-width: 1500px;
 `;
