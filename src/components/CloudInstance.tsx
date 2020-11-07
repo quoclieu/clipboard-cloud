@@ -1,10 +1,12 @@
 import { css } from "emotion";
+import { storage } from "firebase";
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import { useHistory, useParams } from "react-router-dom";
 import clipboardCloudLogo from "../assets/logo.png";
 import { db } from "../services/firebase";
 import { checkInstance } from "../utils/checkInstanceExists";
+import { removeFromLocalStorage } from "../utils/localStorageFunctions";
 import { FileShare } from "./FileShare";
 import { HintText } from "./styled-components/HintText";
 import { TextShare } from "./TextShare";
@@ -23,8 +25,22 @@ export const CloudInstance = () => {
   }, [history, id]);
 
   const removeInstance = () => {
+    // delete all notes for this id in firebase db
     db().ref(id).remove();
-    history.goBack();
+    // delete all images for this id in firebase storage
+    storage()
+      .ref()
+      .child(id)
+      .listAll()
+      .then((res) => {
+        res.items.forEach(function (itemRef) {
+          itemRef.delete();
+        });
+      });
+
+    // remove this id from last viewed
+    removeFromLocalStorage(id);
+    history.push("/");
   };
 
   if (!isValid) return null;
@@ -32,11 +48,7 @@ export const CloudInstance = () => {
   return (
     <div className={pageWrapper}>
       <header className={headerContainer}>
-        <h1
-          style={{ marginBottom: "2rem", fontSize: "2rem" }}
-          onClick={() => history.push("/")}
-          className={heading}
-        >
+        <h1 onClick={() => history.push("/")} className={heading}>
           <img
             src={clipboardCloudLogo}
             alt="clipboard-cloud-logo"
@@ -97,6 +109,8 @@ const pageWrapper = css`
 `;
 
 const heading = css`
+  margin-bottom: 2rem;
+  font-size: 2rem;
   &:hover {
     cursor: pointer;
   }
