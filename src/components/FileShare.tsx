@@ -8,6 +8,9 @@ import { FaFileAlt } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
 import { storage } from "../services/firebase";
 import { colors } from "../style-variables";
+import { HintText } from "./styled-components/HintText";
+
+const MB_IN_BYTES = 1048576;
 
 interface Props {
   instanceId: string;
@@ -39,12 +42,13 @@ export const FileShare: FunctionComponent<Props> = ({ instanceId }) => {
     let fileName = "untitled";
     if (e.target.files !== null) {
       fileName = e.target.files[0].name;
+      if (e.target.files[0].size > 10 * MB_IN_BYTES) {
+        alert("File size is too large.");
+      }
+
       storageRef
         .child(fileName)
         .put(e.target.files![0])
-        .then(() => {
-          console.log("upload done");
-        })
         .then(() => {
           return storageRef.child(fileName).getDownloadURL();
         })
@@ -84,6 +88,7 @@ export const FileShare: FunctionComponent<Props> = ({ instanceId }) => {
           Upload File
         </label>
       </Button>
+      <HintText>Max file size of 10MB</HintText>
 
       <section className={fileContainer}>
         {sortBy(downloadUrls, ["name"]).map((file, index) => {
@@ -113,7 +118,7 @@ export const FileShare: FunctionComponent<Props> = ({ instanceId }) => {
             onChange={handleUploadFile}
             className={fileInput}
           />
-          Drag file here to upload.
+          Drag a file here to upload.
         </label>
       </section>
     </>
@@ -135,7 +140,7 @@ const fileInput = css`
 
 const fileDropzone = css`
   margin-top: 20px;
-  border: 1px dashed ${colors.gray1};
+  border: 1px dashed ${colors.gray};
   border-radius: 2px;
   height: 200px;
   width: 100%;
@@ -147,7 +152,7 @@ const fileDropzone = css`
 
 const heading = css`
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   margin-top: 5px;
 `;
 
@@ -164,7 +169,7 @@ const fileRow = css`
 
 const fileIcon = css`
   margin-right: 10px;
-  color: ${colors.blue1};
+  color: ${colors.blue};
   font-size: 20px;
 `;
 

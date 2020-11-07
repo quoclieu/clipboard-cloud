@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./App.css";
 import { CloudInstance } from "./components/CloudInstance";
 import { Home } from "./components/Home";
 

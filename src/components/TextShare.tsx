@@ -67,7 +67,7 @@ export const TextShare: FunctionComponent<Props> = ({ instanceId }) => {
 
   return (
     <>
-      <h5 className={heading}>Text</h5>
+      <h5 className={heading}>Notes</h5>
       <div className={btnContainer}>
         <button
           className={cx(tabBtn, { [tabBtnSelected]: visibleTextArea === 0 })}
@@ -85,7 +85,7 @@ export const TextShare: FunctionComponent<Props> = ({ instanceId }) => {
           className={cx(tabBtn, { [tabBtnSelected]: visibleTextArea === 2 })}
           onClick={() => setVisibleTextArea(2)}
         >
-          Code Note
+          Code block
         </button>
       </div>
       {textVals.map((textVal, index) => {
@@ -116,7 +116,7 @@ const tabBtn = css`
   border-radius: 0px;
   margin-right: 1rem;
   background-color: transparent;
-  color: ${colors.gray1};
+  color: ${colors.gray};
   font-weight: bold;
   border: none;
   &:last-child {
@@ -131,9 +131,9 @@ const tabBtn = css`
 `;
 
 const tabBtnSelected = css`
-  color: ${colors.blue1};
+  color: ${colors.blue};
   padding: 5px;
-  border-bottom: 2px solid ${colors.blue1};
+  border-bottom: 2px solid ${colors.blue};
 `;
 
 const btnContainer = css`
@@ -142,18 +142,21 @@ const btnContainer = css`
 `;
 
 const textArea = css`
-  border: 2px solid ${colors.bordergray};
+  border-radius: 2px;
+  border: 2px solid ${colors.gray};
   width: 100%;
-  min-height: 300px;
+  min-height: 500px;
   padding: 1rem;
   margin-top: 4px;
   &:focus {
-    outline: 2px solid ${colors.blue1};
+    border: 2px solid ${colors.blue};
   }
   &:nth-child(2) {
   }
   &:last-child {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
+    background-color: ${colors.charcoal};
+    color: white;
   }
 `;
