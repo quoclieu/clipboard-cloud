@@ -90,7 +90,7 @@ export const FileShare: FunctionComponent<Props> = ({ instanceId }) => {
       </Button>
       <HintText>Max file size of 10MB</HintText>
 
-      <section className={fileContainer}>
+      <section>
         {sortBy(downloadUrls, ["name"]).map((file, index) => {
           return (
             <div key={file.url} className={fileRow}>
@@ -124,8 +124,6 @@ export const FileShare: FunctionComponent<Props> = ({ instanceId }) => {
     </>
   );
 };
-
-const fileContainer = css``;
 
 const fileInput = css`
   border: 1px solid black;

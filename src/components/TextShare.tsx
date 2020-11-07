@@ -41,7 +41,7 @@ export const TextShare: FunctionComponent<Props> = ({ instanceId }) => {
 
   useEffect(loadDb, [loadDb]);
 
-  const debounceUpdateDb = useMemo(
+  const debounceUpdateNotes = useMemo(
     () =>
       debounce((nextVals: Array<string>) => {
         dbTextRef!.set({ 0: nextVals[0], 1: nextVals[1], 2: nextVals[2] });
@@ -60,9 +60,9 @@ export const TextShare: FunctionComponent<Props> = ({ instanceId }) => {
 
       setTextVals(newVals);
 
-      debounceUpdateDb(newVals);
+      debounceUpdateNotes(newVals);
     },
-    [debounceUpdateDb, textVals]
+    [debounceUpdateNotes, textVals]
   );
 
   return (

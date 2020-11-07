@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import { useHistory } from "react-router-dom";
 import clipboardCloudLogo from "../assets/logo.png";
 import { db } from "../services/firebase";
-import { checkInstance } from "../utils/checkInstanceExists";
+import { checkInstanceExists } from "../utils/checkInstanceExists";
 import { generateId } from "../utils/generateId";
 import {
   addToLocalStorage,
@@ -64,7 +64,7 @@ export const Home = () => {
   const handleSearchBtn = () => {
     setShowErrAlert(false);
 
-    checkInstance(uniqId)
+    checkInstanceExists(uniqId)
       .then(() => {
         if (!lastVisitedIds.includes(uniqId)) {
           addToLocalStorage(uniqId);

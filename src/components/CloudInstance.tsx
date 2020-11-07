@@ -5,7 +5,7 @@ import Button from "react-bootstrap/esm/Button";
 import { useHistory, useParams } from "react-router-dom";
 import clipboardCloudLogo from "../assets/logo.png";
 import { db } from "../services/firebase";
-import { checkInstance } from "../utils/checkInstanceExists";
+import { checkInstanceExists } from "../utils/checkInstanceExists";
 import { removeFromLocalStorage } from "../utils/localStorageFunctions";
 import { FileShare } from "./FileShare";
 import { HintText } from "./styled-components/HintText";
@@ -17,7 +17,7 @@ export const CloudInstance = () => {
   const history = useHistory();
 
   useEffect(() => {
-    checkInstance(id)
+    checkInstanceExists(id)
       .then(() => setIsValid(true))
       .catch(() => {
         history.push("/");

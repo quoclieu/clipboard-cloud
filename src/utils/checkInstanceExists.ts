@@ -1,6 +1,6 @@
 import { db } from "../services/firebase";
 
-export const checkInstance = (uniqId: string) => {
+export const checkInstanceExists = (uniqId: string) => {
   return db()
     .ref(uniqId)
     .once("value")
