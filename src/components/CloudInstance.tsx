@@ -106,6 +106,9 @@ export const CloudInstance = () => {
 
 const pageWrapper = css`
   margin: 2rem 4rem;
+  @media (max-width: 500px) {
+    margin: 2rem 1rem;
+  } ;
 `;
 
 const heading = css`

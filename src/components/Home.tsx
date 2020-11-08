@@ -79,7 +79,11 @@ export const Home = () => {
       <header className={header}>
         <img src={clipboardCloudLogo} alt="clipboard-cloud-logo" height="80" />
         <h1>Clipboard Cloud</h1>
-        <p>A simple, easy, quick web app to share content across any device.</p>
+        <div style={{ padding: "0 20px" }}>
+          <p style={{ textAlign: "center" }}>
+            Easy and quick way to share text or files across any device.
+          </p>
+        </div>
       </header>
       <Button
         variant="dark"
